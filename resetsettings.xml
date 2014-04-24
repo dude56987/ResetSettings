@@ -1,0 +1,112 @@
+# use resetsettings -l to list these preset app resets
+# use resetsettings -a appname to reset a app in this file
+# Below is a commented out example entry for preconf
+###################################################
+#<preset>
+# the appname should be the name of the program the
+# config settings are for. This will be what the CLI
+# commands take when reseting a specific program.
+#	<name>appname</name>
+# write as if your in the root of a users home folder
+# the program will replace settings with the presets in
+# /etc/skel so before adding entrys add the aproprate
+# files there.
+#	<folder>.appname/</folder>
+#	<file>.appnamerc</file>
+#</preset>
+###################################################
+# Below is a comment free version of the example,
+# you still need to remove the # at the begining to
+# uncommment it.
+###################################################
+#<preset>
+#	<name>appname</name>
+#	<folder>.appname/</folder>
+#	<file>.appnamerc</file>
+#</preset>
+###################################################
+# Note that you can delete things with 
+# <deletefile></deletefile>
+# and 
+# <deletefolder></deletefolder>
+# although they are not recommended for most tasks
+###################################################
+<preset>
+	<name>firefox</name>
+	<folder>.mozilla/</folder>
+</preset>
+<preset>
+	<name>guake</name>
+	<folder>.gconf/apps/guake/</folder>
+</preset>
+<preset>
+	<name>thunar</name>
+	<folder>.config/Thunar/</folder>
+	<file>.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml</file>
+</preset>
+<preset>
+	<name>xfce-desktop</name>
+	<file>.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml</file>
+</preset>
+<preset>
+	<name>radiotray</name>
+	<folder>.local/share/radiotray/</folder>
+</preset>
+<preset>
+	<name>xfce-panel</name>
+	<folder>.config/xfce4/panel/</folder>
+	<file>.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml</file>
+</preset>
+<preset>
+	<name>goldendict</name>
+	<folder>.goldendict/</folder>
+</preset>
+<preset>
+	<name>qshutdown</name>
+	<folder>.qshutdown/</folder>
+</preset>
+<preset>
+	<name>xarchiver</name>
+	<folder>.config/xarchiver/</folder>
+</preset>
+<preset>
+	<name>synapse</name>
+	<folder>.config/synapse/</folder>
+</preset>
+<preset>
+	<name>window manager session</name>
+	<file>.dmrc</file>
+</preset>
+<preset>
+	<name>ZSH</name>
+	<file>.zshrc</file>
+</preset>
+<preset>
+	<name>logout cleanup script</name>
+	<file>.bash_logout</file>
+</preset>
+<preset>
+	<name>psensor</name>
+	<file>.gconf/apps/psensor/interface/%gconf.xml</file>
+</preset>
+<preset>
+	<name>fluxbox</name>
+	<folder>.fluxbox</folder>
+</preset>
+<preset>
+	<name>pybitmessage</name>
+	<folder>.config/PyBitmessage/</folder>
+	<command>sed -i.backup 's/startintray =*\n/startintray = True\n/g' .config/PyBitmessage/keys.dat</command>
+</preset>
+<preset>
+	<name>terminator</name>
+	<folder>.config/terminator/</folder>
+</preset>
+<preset>
+	<name>autostart applications</name>
+	<folder>.config/autostart/</folder>
+</preset>
+<preset>
+	<name>volumeicon</name>
+	<folder>.config/volumeicon/</folder>
+</preset>
