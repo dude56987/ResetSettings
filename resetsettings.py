@@ -287,7 +287,7 @@ if defaultRun == True:# by default run the program for the current user but conf
 		print ' * This program will reset user settings, changing things back to thier default!'
 		print ' * This will not remove any software from your computer!'
 		print ' * May change settings you dont want it to!'
-		print 'Are you shure you would like to reset YOUR user settings???'
+		print 'Are you sure you would like to reset YOUR user settings???'
 		query = raw_input('[y/n]: ')
 		if query == 'y':
 			userName = os.popen('whoami').readline().split('\n')[0]
