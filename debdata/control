@@ -1,0 +1,11 @@
+Package: resetsettings
+Version: 1.1
+Section: utils
+Maintainer: Carl Smith <feedback@hacker-haven.com>
+Installed-Size: 44
+Homepage: hacker-haven.com
+Priority: optional
+Architecture: all
+Depends: 
+Description: Resets the settings for a specific user or application for a specific user.
+ Resets the settings for a specific user or application for a specific user.
