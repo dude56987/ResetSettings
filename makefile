@@ -28,6 +28,6 @@ build-deb:
 	cp -rv debdata/. debian/DEBIAN/
 	chmod -R 0755 debian/
 	dpkg-deb --build debian
-	cp -v debian.deb resetsettings.deb
+	cp -v debian.deb resetsettings_UNSTABLE.deb
 	rm -v debian.deb
 	rm -rv debian
