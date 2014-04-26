@@ -226,10 +226,20 @@ for arg in inputs:
 		print "    Resets the settings for the specified user to the system defaults"
 		print '    Multuple users can be used. e.g. resetsetting -u bob john ted'
 		print '-l or --list'
-		print '    Lists the presets defined in the preset config file.'
+		print '    Lists the presets defined in the preset config file. The'
+		print '    config file is stored in /etc/resetsettings.xml'
 		print '-p or --preset'
 		print '    Resets only the preset program to defaults in /etc/skel'
-		print ''
+		print '-b or --backup'
+		print '    This will create a backup based on a preset. The backup will be'
+		print '    stored at the location defined in the preset, appended with '
+		print '    .backup. So config.xml will become config.xml.backup. This file'
+		print '    will be stored in the same location as the orignal file.'
+		print '-r or --restore'
+		print '    Restore settings from a backup created with the --backup'
+		print '    command defined above. If a backup has not been created'
+		print '    nothing will happen. This and the above command will only'
+		print '    work with presets defined in the config file.'
 		print '#############################################################'
 	elif ((('u' == temp[0])) or (('user' == temp[0]))):
 		defaultRun = False
@@ -272,8 +282,37 @@ for arg in inputs:
 					for command in index['command']:
 						print command
 						os.system(command)
-		os.system('sudo chown -R '+username+' '+os.path.join('/home',username))
-
+		os.system('sudo chown -R '+userName+' '+os.path.join('/home',userName))
+	elif ((('b' == temp[0])) or (('backup' == temp[0]))):
+		defaultRun = False
+		userName = os.popen('whoami').readline().split('\n')[0]
+		# for running a preset this will backup specific user settings based on the presets config file
+		data = getSettings()
+		for index in data:
+			for name in index['name']:
+				if (name in sys.argv):
+					print ('Reseting the settings for '+name+'...')
+					for filename in index['file']:
+						print ('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/'+filename+'.backup')
+						os.system('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/'+filename+'.backup')
+					for folder in index['folder']:
+						print ('cp -vrf /home/'+userName+'/'+folder+' /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/')
+						os.system('cp -vrf /home/'+userName+'/'+folder+' /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/')
+	elif ((('r' == temp[0])) or (('restore' == temp[0]))):
+		defaultRun = False
+		userName = os.popen('whoami').readline().split('\n')[0]
+		# for running a preset this will restore specific user settings based on the presets config file that have been backed up with the backup command
+		data = getSettings()
+		for index in data:
+			for name in index['name']:
+				if (name in sys.argv):
+					print ('Reseting the settings for '+name+'...')
+					for filename in index['file']:
+						print ('cp -vrf /home/'+userName+'/'+filename+'.backup /home/'+userName+'/'+filename)
+						os.system('cp -vrf /home/'+userName+'/'+filename+'.backup /home/'+userName+'/'+filename)
+					for folder in index['folder']:
+						print ('cp -vrf /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/. /home/'+userName+'/'+folder)
+						os.system('cp -vrf /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/. /home/'+userName+'/'+folder)
 if defaultRun == True:# by default run the program for the current user but confirm operation
 	if ((('f' == temp[0])) or (('force' == temp[0]))):
 		# force the program on without confirmation
