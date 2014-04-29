@@ -1,11 +1,11 @@
 Package: resetsettings
-Version: 1.1
+Version: 1.2
 Section: utils
-Maintainer: Carl Smith <feedback@hacker-haven.com>
-Installed-Size: 44
+Maintainer: Carl J Smith <BM-NBHLt5EUFVEbRCmrbVrfCyaB2c8d24U9>
+Installed-Size: 48
 Homepage: hacker-haven.com
 Priority: optional
 Architecture: all
-Depends: 
+Depends: python (>=2.7)
 Description: Resets the settings for a specific user or application for a specific user.
- Resets the settings for a specific user or application for a specific user.
+ Resets the settings for a specific user or application for a specific user. Can also create a backup with presets and restore that backup at a latter time.
