@@ -9,8 +9,6 @@ run:
 	python resetsettings.py
 uninstall:
 	rm -v /usr/bin/resetsettings
-installed-size:
-	du -sx --exclude DEBIAN ./debian/
 build: 
 	sudo make build-deb;
 build-deb:
@@ -27,6 +25,7 @@ build-deb:
 	rm -v ./debian/DEBIAN/md5sums.bak
 	cp -rv debdata/. debian/DEBIAN/
 	chmod -R 0755 debian/
+	du -sx --exclude DEBIAN ./debian/ > size.txt
 	dpkg-deb --build debian
 	cp -v debian.deb resetsettings_UNSTABLE.deb
 	rm -v debian.deb
