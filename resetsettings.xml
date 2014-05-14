@@ -80,6 +80,7 @@
 <preset>
 	<name>ZSH</name>
 	<file>.zshrc</file>
+	<file>.zshenv</file>
 </preset>
 <preset>
 	<name>logout cleanup script</name>
@@ -95,8 +96,8 @@
 </preset>
 <preset>
 	<name>pybitmessage</name>
-	<folder>.config/PyBitmessage/</folder>
 	<command>sed -i.backup 's/startintray =*\n/startintray = True\n/g' .config/PyBitmessage/keys.dat</command>
+	<folder>.config/PyBitmessage/</folder>
 </preset>
 <preset>
 	<name>terminator</name>
