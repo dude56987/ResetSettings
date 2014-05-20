@@ -111,3 +111,7 @@
 	<name>volumeicon</name>
 	<folder>.config/volumeicon/</folder>
 </preset>
+<preset>
+	<name>pidgin</name>
+	<folder>.purple/</folder>
+</preset>
