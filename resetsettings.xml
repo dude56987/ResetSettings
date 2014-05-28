@@ -115,3 +115,7 @@
 	<name>pidgin</name>
 	<folder>.purple/</folder>
 </preset>
+<preset>
+	<name>git</name>
+	<file>.gitconfig</file>
+</preset>
