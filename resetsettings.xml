@@ -119,3 +119,9 @@
 	<name>git</name>
 	<file>.gitconfig</file>
 </preset>
+<preset>
+	<name>kupfer</name>
+	<folder>.config/kupfer</folder>
+	<folder>.local/share/kupfer</folder>
+	<folder>.cache/kupfer</folder>
+</preset>
