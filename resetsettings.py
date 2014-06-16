@@ -291,13 +291,14 @@ for arg in inputs:
 		for index in data:
 			for name in index['name']:
 				if (name in sys.argv):
-					print ('Reseting the settings for '+name+'...')
+					print ('Creating a backup of the settings for '+name+'...')
 					for filename in index['file']:
-						print ('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/'+filename+'.backup')
-						os.system('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/'+filename+'.backup')
+						print ('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/.backups/'+filename)
 					for folder in index['folder']:
-						print ('cp -vrf /home/'+userName+'/'+folder+' /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/')
-						os.system('cp -vrf /home/'+userName+'/'+folder+' /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/')
+						print ('mkdir -p /home/'+userName+'/.backups/'+folder)
+						os.system('mkdir -p /home/'+userName+'/.backups/'+folder)
+						print ('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
+						os.system('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
 	elif ((('r' == temp[0])) or (('restore' == temp[0]))):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
@@ -306,13 +307,13 @@ for arg in inputs:
 		for index in data:
 			for name in index['name']:
 				if (name in sys.argv):
-					print ('Reseting the settings for '+name+'...')
+					print ('Restoring the settings for '+name+'...')
 					for filename in index['file']:
-						print ('cp -vrf /home/'+userName+'/'+filename+'.backup /home/'+userName+'/'+filename)
-						os.system('cp -vrf /home/'+userName+'/'+filename+'.backup /home/'+userName+'/'+filename)
+						print ('cp -vrf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
+						os.system('cp -vrf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
 					for folder in index['folder']:
-						print ('cp -vrf /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/. /home/'+userName+'/'+folder)
-						os.system('cp -vrf /home/'+userName+'/'+folder[:len(folder)-1]+'.backup/. /home/'+userName+'/'+folder)
+						print ('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
+						os.system('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
 if defaultRun == True:# by default run the program for the current user but confirm operation
 	if ((('f' == temp[0])) or (('force' == temp[0]))):
 		# force the program on without confirmation
