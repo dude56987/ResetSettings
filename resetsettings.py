@@ -174,7 +174,7 @@ def resetSettings(username):
 	os.system(('sudo cp -rvf /etc/skel/. '+os.path.join('/home',username)))
 	#~ shutil.copytree('/etc/skel',os.path.join('/home',username))
 	# set user ownership for local files
-	os.system('sudo chown --recursive '+username+' '+os.path.join('/home',username))
+	os.system('sudo chown -v --recursive '+username+' '+os.path.join('/home',username))
 	# warn user to logout and back in to refresh settings
 	print 'It is recomended that you logout and back in to refresh your settings!'
 	print 'If you dont you may notice some issues...'
@@ -282,7 +282,7 @@ for arg in inputs:
 					for command in index['command']:
 						print command
 						os.system(command)
-		os.system('sudo chown -R '+userName+' '+os.path.join('/home',userName))
+		os.system('sudo chown -v -R '+userName+' '+os.path.join('/home',userName))
 	elif ((('b' == temp[0])) or (('backup' == temp[0]))):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
@@ -435,7 +435,7 @@ for fileName in files:
 				newConfig += line+'\n'
 		writeFile(filePath,newConfig.replace('\n\n','\n'))
 		# make user the owner of this file once more since root is editing the files
-		os.system(('chown '+fileName+' '+filePath))
+		os.system(('chown -v '+fileName+' '+filePath))
 	print 'Icon Theme Set to NITRUX, font set to Hermit'
 	########################################################################
 	# change the desktop background
@@ -461,7 +461,7 @@ for fileName in files:
 				newConfig += line+'\n'
 		writeFile(filePath,newConfig.replace('\n\n','\n'))
 		# make user the owner of this file once more since root is editing the files
-		os.system(('chown '+fileName+' '+filePath))
+		os.system(('chown -v '+fileName+' '+filePath))
 	print 'desktop background is now setup correctly'
 	####################################################################
 	# install programs used for custom actions
@@ -469,7 +469,7 @@ for fileName in files:
 	# copy the thunar custom actions file over to each user
 	if os.path.exists(os.path.join('/home',fileName,'.config','Thunar','uca.xml')):
 		shutil.copy('resources/uca.xml',os.path.join('/home',fileName,'.config','Thunar','uca.xml'))
-		os.system(('sudo chown '+fileName+' '+os.path.join('/home',fileName,'.config','Thunar','uca.xml')))
+		os.system(('sudo chown -v '+fileName+' '+os.path.join('/home',fileName,'.config','Thunar','uca.xml')))
 	# open port used for lan share of files using thunar
 	os.system('sudo ufw allow from 192.168.1.0/24 to any port 9119')
 	os.system('sudo ufw allow from 192.168.2.0/24 to any port 9119')
