@@ -125,3 +125,12 @@
 	<folder>.local/share/kupfer</folder>
 	<folder>.cache/kupfer</folder>
 </preset>
+<preset>
+	<name>xbmc</name>
+	<folder>.xbmc</folder>
+</preset>
+<preset>
+	<name>ssh</name>
+	<folder>.ssh</folder>
+</preset>
+
