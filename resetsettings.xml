@@ -74,7 +74,7 @@
 	<folder>.config/synapse/</folder>
 </preset>
 <preset>
-	<name>window manager session</name>
+	<name>window_manager_session</name>
 	<file>.dmrc</file>
 </preset>
 <preset>
@@ -83,7 +83,7 @@
 	<file>.zshenv</file>
 </preset>
 <preset>
-	<name>logout cleanup script</name>
+	<name>logout_cleanup_script</name>
 	<file>.bash_logout</file>
 </preset>
 <preset>
@@ -126,6 +126,21 @@
 	<folder>.cache/kupfer</folder>
 </preset>
 <preset>
+	<name>retroarch</name>
+	<file>.config/retroarch/retroarch.cfg</file>
+</preset>
+<preset>
+	<name>midori</name>
+	<folder>.config/midori</folder>
+	<folder>.local/share/midori</folder>
+</preset>
+<preset>
+	<name>vim</name>
+	<file>.vimrc</file>
+</preset>
+<preset>
+	<name>xterm</name>
+	<file>.Xresources</file>
 	<name>xbmc</name>
 	<folder>.xbmc</folder>
 </preset>
