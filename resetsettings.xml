@@ -104,7 +104,7 @@
 	<folder>.config/terminator/</folder>
 </preset>
 <preset>
-	<name>autostart applications</name>
+	<name>autostart_applications</name>
 	<folder>.config/autostart/</folder>
 </preset>
 <preset>
@@ -113,7 +113,7 @@
 </preset>
 <preset>
 	<name>pidgin</name>
-	<folder>.purple/</folder>
+	<folder>.purple</folder>
 </preset>
 <preset>
 	<name>git</name>
@@ -141,11 +141,31 @@
 <preset>
 	<name>xterm</name>
 	<file>.Xresources</file>
+</preset>
+<preset>
 	<name>xbmc</name>
 	<folder>.xbmc</folder>
 </preset>
 <preset>
 	<name>ssh</name>
 	<folder>.ssh</folder>
+</preset>
+<preset>
+	<name>lxde</name>
+	<folder>.config/lxpanel</folder>
+	<folder>.config/lxsession</folder>
+	<file>.config/menus/lxde-applications.menu</file>
+</preset>
+<preset>
+	<name>lxde-panel</name>
+	<folder>.config/lxpanel</folder>
+</preset>
+<preset>
+	<name>lxde-desktop</name>
+	<folder>.config/lxsession</folder>
+</preset>
+<preset>
+	<name>retroshare</name>
+	<folder>.retroshare</folder>
 </preset>
 
