@@ -290,8 +290,6 @@ for arg in inputs:
 					for command in index['command']:
 						print command
 						os.system(command)
-		print ('sudo chown -R '+userName+' '+os.path.join('/home',userName))
-		os.system('sudo chown -R '+userName+' '+os.path.join('/home',userName))
 	elif ((('b' == temp[0])) or (('backup' == temp[0]))):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
