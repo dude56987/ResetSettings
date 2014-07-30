@@ -1,6 +1,9 @@
-# use resetsettings -l to list these preset app resets
-# use resetsettings -a appname to reset a app in this file
-# Below is a commented out example entry for preconf
+###################################################
+# - use resetsettings -l to list these preset app resets
+# - use resetsettings -p appname to reset a app in this file
+#    using the settings stored in /etc/skel
+# - use resetsettings -b appname to backup an app
+# Below is a commented out example entry for an app
 ###################################################
 #<preset>
 # the appname should be the name of the program the
@@ -30,6 +33,14 @@
 # and 
 # <deletefolder></deletefolder>
 # although they are not recommended for most tasks
+###################################################
+# You can also lauch a command when restoring with
+# the -p argument.
+# <command>yourcommand --someArgs somefile</command>
+# These commands will only run when using a preset 
+# to restore. If you are running a backup with -b 
+# or a restore from a previous backup with -r the
+# command will not execute.
 ###################################################
 <preset>
 	<name>firefox</name>
@@ -155,6 +166,7 @@
 	<folder>.config/lxpanel</folder>
 	<folder>.config/lxsession</folder>
 	<file>.config/menus/lxde-applications.menu</file>
+	<file>.config/openbox/lxde-rc.xml</file>
 </preset>
 <preset>
 	<name>lxde-panel</name>
@@ -165,7 +177,14 @@
 	<folder>.config/lxsession</folder>
 </preset>
 <preset>
+	<name>lxde-shortcuts</name>
+	<file>.config/openbox/lxde-rc.xml</file>
+</preset>
+<preset>
 	<name>retroshare</name>
 	<folder>.retroshare</folder>
 </preset>
-
+<preset>
+	<name>gnome-genius</name>
+	<file>.gnome2/genius</file>
+</preset>

@@ -29,6 +29,8 @@ import sys
 #  * Make the -u user command and -p preset command work together to 
 #    edit the specific user specified preset settings
 #    - Later on this should also work with the above lock setting
+#  * Make a command that will backup all current user settings to the 
+#    /etc/skel directory 
 ########################################################################
 def makeDir(remoteDir):
 	import os
@@ -259,12 +261,17 @@ for arg in inputs:
 		defaultRun = False
 		# This command will list all presets
 		data = getSettings()
-		print 'The following presets have been created...'
+		print 'The following presets are stored in /etc/resetsettings.xml'
+		print ('='*20)
 		for index in data:
 			for name in index['name']:
 				print ('* "'+name+'"')
 		print
-		print 'To use a reset preset type resetsettings -p presetName'
+		print ('='*20)
+		print 'To use a reset preset type "resetsettings -p presetName"'
+		print ('='*20)
+		print 'To search these presets use "resetsettings -l | grep appname"'
+		print ('='*20)
 	elif ((('p' == temp[0])) or (('preset' == temp[0]))):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
