@@ -295,7 +295,8 @@ for arg in inputs:
 				if (name in sys.argv):
 					print ('Creating a backup of the settings for '+name+'...')
 					for filename in index['file']:
-						print ('cp -vrf /home/'+userName+'/'+filename+' /home/'+userName+'/.backups/'+filename)
+						print ('cp -vf /home/'+userName+'/'+filename+' /home/'+userName+'/.backups/'+filename)
+						os.system('cp -vf /home/'+userName+'/'+filename+' /home/'+userName+'/.backups/'+filename)
 					for folder in index['folder']:
 						print ('mkdir -p /home/'+userName+'/.backups/'+folder)
 						os.system('mkdir -p /home/'+userName+'/.backups/'+folder)
