@@ -13,7 +13,8 @@
 # write as if your in the root of a users home folder
 # the program will replace settings with the presets in
 # /etc/skel so before adding entrys add the aproprate
-# files there.
+# files there. 
+# THE FOLDER LINE MUST ALWAYS BE ENDED WITH A / LIKE BELOW
 #	<folder>.appname/</folder>
 #	<file>.appnamerc</file>
 #</preset>
@@ -103,7 +104,7 @@
 </preset>
 <preset>
 	<name>fluxbox</name>
-	<folder>.fluxbox</folder>
+	<folder>.fluxbox/</folder>
 </preset>
 <preset>
 	<name>pybitmessage</name>
@@ -124,7 +125,7 @@
 </preset>
 <preset>
 	<name>pidgin</name>
-	<folder>.purple</folder>
+	<folder>.purple/</folder>
 </preset>
 <preset>
 	<name>git</name>
@@ -132,9 +133,9 @@
 </preset>
 <preset>
 	<name>kupfer</name>
-	<folder>.config/kupfer</folder>
-	<folder>.local/share/kupfer</folder>
-	<folder>.cache/kupfer</folder>
+	<folder>.config/kupfer/</folder>
+	<folder>.local/share/kupfer/</folder>
+	<folder>.cache/kupfer/</folder>
 </preset>
 <preset>
 	<name>retroarch</name>
@@ -142,8 +143,8 @@
 </preset>
 <preset>
 	<name>midori</name>
-	<folder>.config/midori</folder>
-	<folder>.local/share/midori</folder>
+	<folder>.config/midori/</folder>
+	<folder>.local/share/midori/</folder>
 </preset>
 <preset>
 	<name>vim</name>
@@ -155,26 +156,26 @@
 </preset>
 <preset>
 	<name>xbmc</name>
-	<folder>.xbmc</folder>
+	<folder>.xbmc/</folder>
 </preset>
 <preset>
 	<name>ssh</name>
-	<folder>.ssh</folder>
+	<folder>.ssh/</folder>
 </preset>
 <preset>
 	<name>lxde</name>
-	<folder>.config/lxpanel</folder>
-	<folder>.config/lxsession</folder>
+	<folder>.config/lxpanel/</folder>
+	<folder>.config/lxsession/</folder>
 	<file>.config/menus/lxde-applications.menu</file>
 	<file>.config/openbox/lxde-rc.xml</file>
 </preset>
 <preset>
 	<name>lxde-panel</name>
-	<folder>.config/lxpanel</folder>
+	<folder>.config/lxpanel/</folder>
 </preset>
 <preset>
 	<name>lxde-desktop</name>
-	<folder>.config/lxsession</folder>
+	<folder>.config/lxsession/</folder>
 </preset>
 <preset>
 	<name>lxde-shortcuts</name>
@@ -182,11 +183,11 @@
 </preset>
 <preset>
 	<name>retroshare</name>
-	<folder>.retroshare</folder>
+	<folder>.retroshare/</folder>
 </preset>
 <preset>
 	<name>tox</name>
-	<folder>.config/tox</folder>
+	<folder>.config/tox/</folder>
 </preset>
 <preset>
 	<name>gnome-genius</name>
