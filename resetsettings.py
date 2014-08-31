@@ -317,8 +317,8 @@ for arg in inputs:
 				if (name in sys.argv):
 					print ('Restoring the settings for '+name+'...')
 					for filename in index['file']:
-						print ('cp -vrf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
-						os.system('cp -vrf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
+						print ('cp -vf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
+						os.system('cp -vf /home/'+userName+'/.backups/'+filename+' /home/'+userName+'/'+filename)
 					for folder in index['folder']:
 						print ('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
 						os.system('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
