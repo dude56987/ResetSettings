@@ -168,4 +168,7 @@
 	<name>retroshare</name>
 	<folder>.retroshare</folder>
 </preset>
-
+<preset>
+	<name>tox</name>
+	<folder>.config/tox</folder>
+</preset>
