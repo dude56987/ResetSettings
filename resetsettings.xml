@@ -193,3 +193,7 @@
 	<name>gnome-genius</name>
 	<file>.gnome2/genius</file>
 </preset>
+<preset>
+	<name>transmission</name>
+	<folder>.config/transmission/</folder>
+</preset>
