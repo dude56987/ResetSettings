@@ -183,29 +183,36 @@ def resetSettings(username):
 	print 'If you dont you may notice some issues...'
 ########################################################################
 def getSettings():
+	# try to load the config file locally first
 	if os.path.exists('resetsettings.xml'):
 		dataValues = loadFile('resetsettings.xml')
 	else:
+		# load config file does not exist locally load the one in etc from installed version
 		dataValues = loadFile('/etc/resetsettings.xml')
 	if dataValues == False:
 		print 'ERROR: No config files have been created!'
 		return False
-	data = []
+	# rip file into an array of values based on the <preset> tag
 	dataValues = grabXmlValues(dataValues,'preset')
-
-	for index in dataValues:
-		temp = index
-		data.append({'name':(grabXmlValues(temp,'name')),'file':(grabXmlValues(temp,'file')),'folder':(grabXmlValues(temp,'folder')),'command':(grabXmlValues(temp,'command'))})
+	# create data to store array 
+	data = []
+	for preset in dataValues:
+		# presets xml are striped into a dict
+		data.append({'name':(grabXmlValues(preset,'name')),'file':(grabXmlValues(preset,'file')),'folder':(grabXmlValues(preset,'folder')),'command':(grabXmlValues(preset,'command'))})
+	# return an array of dicts
 	return data
 ########################################################################
 # globals
 userName = os.popen('whoami').readline().split('\n')[0]
 # MAIN PROGRAM
 defaultRun = True; # used for when system arguments are not used
+# split the arguments by - signs to pull arguments more correctly
+# this allows you to split that result by spaces for arguments with multuple entries
 inputs = ' '.join(sys.argv).replace('--','-').split('-')
 for arg in inputs:
-	temp = arg.split(' ')
-	if ((('h' == temp[0])) or (('help' == temp[0]))):
+	argument = arg.split(' ')
+	mainArgument = argument[0]
+	if (mainArgument in ['h','help']):
 		defaultRun = False
 		print "Resets settings to defaults from /etc/skel."
 		print "Copyright (C) 2013  Carl J Smith"
@@ -244,7 +251,7 @@ for arg in inputs:
 		print '    nothing will happen. This and the above command will only'
 		print '    work with presets defined in the config file.'
 		print '#############################################################'
-	elif ((('u' == temp[0])) or (('user' == temp[0]))):
+	elif (mainArgument in ['u','user']):
 		defaultRun = False
 		#check for root since shortcuts need to be installed for all users
 		if os.geteuid() != 0:
@@ -252,12 +259,12 @@ for arg in inputs:
 			print 'This parameter reset settings for a specified user!'
 			exit()
 		else:
-			for item in temp: 
+			for item in argument: 
 				# compare the username given with users home folders
 				if os.path.exists(os.path.join('/home',item)):
 					# reset the users settings for the perfered user
 					resetSettings(item)
-	elif ((('l' == temp[0])) or (('list' == temp[0]))):
+	elif (mainArgument in ['l','list']):
 		defaultRun = False
 		# This command will list all presets
 		data = getSettings()
@@ -272,7 +279,7 @@ for arg in inputs:
 		print ('='*20)
 		print 'To search these presets use "resetsettings -l | grep appname"'
 		print ('='*20)
-	elif ((('p' == temp[0])) or (('preset' == temp[0]))):
+	elif (mainArgument in ['p','preset']):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
 		# for running a preset this will reset specific user settings based on the presets config file
@@ -290,7 +297,7 @@ for arg in inputs:
 					for command in index['command']:
 						print command
 						os.system(command)
-	elif ((('b' == temp[0])) or (('backup' == temp[0]))):
+	elif (mainArgument in ['b','backup']):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
 		# for running a preset this will backup specific user settings based on the presets config file
@@ -307,7 +314,7 @@ for arg in inputs:
 						os.system('mkdir -p /home/'+userName+'/.backups/'+folder)
 						print ('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
 						os.system('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
-	elif ((('r' == temp[0])) or (('restore' == temp[0]))):
+	elif (mainArgument in ['r','restore']):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
 		# for running a preset this will restore specific user settings based on the presets config file that have been backed up with the backup command
@@ -322,8 +329,8 @@ for arg in inputs:
 					for folder in index['folder']:
 						print ('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
 						os.system('cp -vrf /home/'+userName+'/.backups/'+folder[:len(folder)-1]+'/. /home/'+userName+'/'+folder)
-if defaultRun == True:# by default run the program for the current user but confirm operation
-	if ((('f' == temp[0])) or (('force' == temp[0]))):
+if defaultRun == True: # by default run the program for the current user but confirm operation
+	if ((('-f' in sys.argv)) or (('--force' in sys.argv))):
 		# force the program on without confirmation
 		userName = os.popen('whoami').readline().split('\n')[0]
 		resetSettings(userName)
@@ -339,8 +346,6 @@ if defaultRun == True:# by default run the program for the current user but conf
 		query = raw_input('[y/n]: ')
 		if query == 'y':
 			userName = os.popen('whoami').readline().split('\n')[0]
-			if ((('b' == temp[0])) or (('backup' == temp[0]))):
-				os.system('cp ')
 			resetSettings(userName)
 			print '#####################################################'
 			print 'PLEASE REBOOT THE SYSTEM TO FINALIZE THE RESET!'
