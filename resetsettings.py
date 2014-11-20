@@ -1,7 +1,7 @@
 #! /usr/bin/python
 ########################################################################
 # Resets settings to defaults from /etc/skel.
-# Copyright (C) 2013  Carl J Smith
+# Copyright (C) 2014  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -215,7 +215,7 @@ for arg in inputs:
 	if (mainArgument in ['h','help']):
 		defaultRun = False
 		print "Resets settings to defaults from /etc/skel."
-		print "Copyright (C) 2013  Carl J Smith"
+		print "Copyright (C) 2014  Carl J Smith"
 		print ""
 		print "This program is free software: you can redistribute it and/or modify"
 		print "it under the terms of the GNU General Public License as published by"
@@ -250,6 +250,18 @@ for arg in inputs:
 		print '    command defined above. If a backup has not been created'
 		print '    nothing will happen. This and the above command will only'
 		print '    work with presets defined in the config file.'
+		print '#############################################################'
+		print 'Larger batch operations can be performed specific to the user'
+		print 'with a config file stored in the users home directory. '
+		print '    ~/.bigBackup.cfg'
+		print 'Inside this file you can only put a single entry per line.'
+		print 'The entries can only be the predefined names viewable with'
+		print 'the --list or -l command.'
+		print '============================================================='
+		print '-R or --big-restore'
+		print '    Perform a restore on all presets listed in the config file.'
+		print '-B or --big-backup'
+		print '    Perform a backup on all presets listed in the config file.'
 		print '#############################################################'
 	elif (mainArgument in ['u','user']):
 		defaultRun = False
@@ -314,6 +326,34 @@ for arg in inputs:
 						os.system('mkdir -p /home/'+userName+'/.backups/'+folder)
 						print ('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
 						os.system('cp -vrf /home/'+userName+'/'+folder+'. /home/'+userName+'/.backups/'+folder)
+	elif (mainArgument in ['B','big-backup']):
+		# big backup will create a backup based on ~/.bigBackup.cfg this can be backed up too
+		defaultRun = False
+		userName = os.popen('whoami').readline().split('\n')[0]
+		# for running a preset this will backup specific user settings based on the presets config file
+		bigBackupPath = os.path.join('/home/',userName,'.bigBackup.cfg')
+		if os.path.exists(bigBackupPath):
+			bigBackupConfig = loadFile(bigBackupPath)
+			if bigBackupConfig != False:
+				for line in bigBackupConfig.split('\n'):
+					if line[:1] != '#' and len(line)>1:
+						os.system(('resetsettings -b '+line))
+		else:
+			print bigBackupPath,' does not exist, please create it.'
+	elif (mainArgument in ['R','big-restore']):
+		# big backup will create a backup based on ~/.bigBackup.cfg this can be backed up too
+		defaultRun = False
+		userName = os.popen('whoami').readline().split('\n')[0]
+		# for running a preset this will backup specific user settings based on the presets config file
+		bigBackupPath = os.path.join('/home/',userName,'.bigBackup.cfg')
+		if os.path.exists(bigBackupPath):
+			bigBackupConfig = loadFile(bigBackupPath)
+			if bigBackupConfig != False:
+				for line in bigBackupConfig.split('\n'):
+					if line[:1] != '#' and len(line)>1:
+						os.system(('resetsettings -r '+line))
+		else:
+			print bigBackupPath,' does not exist, please create it.'
 	elif (mainArgument in ['r','restore']):
 		defaultRun = False
 		userName = os.popen('whoami').readline().split('\n')[0]
