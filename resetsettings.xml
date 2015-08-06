@@ -52,6 +52,10 @@
 	<folder>.gconf/apps/guake/</folder>
 </preset>
 <preset>
+	<name>tilda</name>
+	<folder>.config/tilda/</folder>
+</preset>
+<preset>
 	<name>thunar</name>
 	<folder>.config/Thunar/</folder>
 	<file>.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml</file>
