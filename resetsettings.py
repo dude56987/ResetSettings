@@ -304,8 +304,8 @@ for arg in inputs:
 						print ('cp -vf /etc/skel/'+filename+' /home/'+userName+'/'+filename)
 						os.system('cp -vf /etc/skel/'+filename+' /home/'+userName+'/'+filename)
 					for folder in index['folder']:
-						print ('cp -vrf /etc/skel/'+folder+' /home/'+userName+'/'+folder)
-						os.system('cp -vrf /etc/skel/'+folder+' /home/'+userName+'/'+folder)
+						print ('cp -vrf /etc/skel/'+folder+'. /home/'+userName+'/'+folder)
+						os.system('cp -vrf /etc/skel/'+folder+'. /home/'+userName+'/'+folder)
 					for command in index['command']:
 						print command
 						os.system(command)
