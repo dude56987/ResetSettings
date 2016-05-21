@@ -1,7 +1,7 @@
 #! /usr/bin/python
 ########################################################################
 # Resets settings to defaults from /etc/skel.
-# Copyright (C) 2014  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -214,8 +214,9 @@ for arg in inputs:
 	mainArgument = argument[0]
 	if (mainArgument in ['h','help']):
 		defaultRun = False
+		print "#############################################################"
 		print "Resets settings to defaults from /etc/skel."
-		print "Copyright (C) 2014  Carl J Smith"
+		print "Copyright (C) 2016  Carl J Smith"
 		print ""
 		print "This program is free software: you can redistribute it and/or modify"
 		print "it under the terms of the GNU General Public License as published by"
