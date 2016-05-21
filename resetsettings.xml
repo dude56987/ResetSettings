@@ -49,8 +49,9 @@
 </preset>
 <preset>
 	<name>guake</name>
-	<command>gconftool --recursive-unset /apps/guake</command>
 	<folder>.gconf/apps/guake/</folder>
+	<command>gconftool --shutdown</command>
+	<command>gconftool --spawn</command>
 </preset>
 <preset>
 	<name>tilda</name>
@@ -109,8 +110,9 @@
 </preset>
 <preset>
 	<name>psensor</name>
-	<command>gconftool --recursive-unset /apps/psensor</command>
 	<folder>.gconf/apps/psensor/</folder>
+	<command>gconftool --shutdown</command>
+	<command>gconftool --spawn</command>
 </preset>
 <preset>
 	<name>fluxbox</name>
