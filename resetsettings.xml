@@ -49,6 +49,7 @@
 </preset>
 <preset>
 	<name>guake</name>
+	<command>gconftool --recursive-unset /apps/guake</command>
 	<folder>.gconf/apps/guake/</folder>
 </preset>
 <preset>
@@ -108,7 +109,8 @@
 </preset>
 <preset>
 	<name>psensor</name>
-	<file>.gconf/apps/psensor/interface/%gconf.xml</file>
+	<command>gconftool --recursive-unset /apps/psensor</command>
+	<folder>.gconf/apps/psensor/</folder>
 </preset>
 <preset>
 	<name>fluxbox</name>
