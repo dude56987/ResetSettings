@@ -283,9 +283,15 @@ for arg in inputs:
 		data = getSettings()
 		print 'The following presets are stored in /etc/resetsettings.xml'
 		print ('='*20)
+		temp=[]
 		for index in data:
 			for name in index['name']:
-				print ('* "'+name+'"')
+				temp.append(name)
+		# sort the list
+		temp.sort()
+		# print the preset items
+		for name in temp:
+			print ('* "'+name+'"')
 		print
 		print ('='*20)
 		print 'To use a reset preset type "resetsettings -p presetName"'
