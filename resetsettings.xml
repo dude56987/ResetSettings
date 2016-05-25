@@ -54,6 +54,10 @@
 	<command>gconftool --spawn</command>
 </preset>
 <preset>
+	<name>screengrab</name>
+	<folder>.config/screengrab/</folder>
+</preset>
+<preset>
 	<name>tilda</name>
 	<folder>.config/tilda/</folder>
 </preset>
