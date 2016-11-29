@@ -346,7 +346,21 @@ for arg in inputs:
 					if line[:1] != '#' and len(line)>1:
 						os.system(('resetsettings -b '+line))
 		else:
-			print bigBackupPath,' does not exist, please create it.'
+			print 'Running all presets since none are specified, this is default.'
+			print '#'*80
+			# get the presets in a list
+			data = getSettings()
+			temp=[]
+			for index in data:
+				for name in index['name']:
+					temp.append(name)
+			for preset in temp:
+				# run backup for each preset available
+				os.system(('resetsettings -b '+preset))
+			print '#'*80
+			print 'Finished running all presets since none were specified, this is the default.'
+			print '~/.bigBackup.cfg was not found, create it to control what presets --big-backup uses.'
+			print 'For how to create the ~/.bigBackup.cfg run "resetsettings -h"'
 	elif (mainArgument in ['R','big-restore']):
 		# big backup will create a backup based on ~/.bigBackup.cfg this can be backed up too
 		defaultRun = False
