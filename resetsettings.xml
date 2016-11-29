@@ -48,6 +48,10 @@
 	<folder>.mozilla/</folder>
 </preset>
 <preset>
+	<name>thunderbird</name>
+	<folder>.thunderbird/</folder>
+</preset>
+<preset>
 	<name>guake</name>
 	<folder>.gconf/apps/guake/</folder>
 	<command>gconftool --shutdown</command>
