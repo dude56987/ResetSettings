@@ -23,20 +23,20 @@ import os
 import sys
 ########################################################################
 # TODO:
-#  * Add lock settings option which requires root, this will chown the 
-#    owner of the config files to root so the user cant change the 
+#  * Add lock settings option which requires root, this will chown the
+#    owner of the config files to root so the user cant change the
 #    settings.
-#  * Make the -u user command and -p preset command work together to 
+#  * Make the -u user command and -p preset command work together to
 #    edit the specific user specified preset settings
 #    - Later on this should also work with the above lock setting
-#  * Make a command that will backup all current user settings to the 
-#    /etc/skel directory 
+#  * Make a command that will backup all current user settings to the
+#    /etc/skel directory
 ########################################################################
 def makeDir(remoteDir):
 	import os
 	''' Creates the defined directory, if a list of directorys are listed
-	that do not exist then they will be created aswell, so beware of 
-	spelling mistakes as this will create the specified directory you 
+	that do not exist then they will be created aswell, so beware of
+	spelling mistakes as this will create the specified directory you
 	type mindlessly.'''
 	temp = remoteDir.split('/')
 	remoteDir= ''
@@ -101,11 +101,11 @@ def currentDirectory():
 ########################################################################
 #Function that opens a xml file and reads data from a set of tags
 def xmlTagValues(fileName,tagValue):
-	'''Open a file (fileName) and search line by line through the 
-	file for every occurrence of a xml tag (tagValue) and return the 
-	values inside each of the tags in an array. If no values are 
-	found the function will return the value (None). NOTE: This can 
-	not find multiples of the same tag if they are on the same 
+	'''Open a file (fileName) and search line by line through the
+	file for every occurrence of a xml tag (tagValue) and return the
+	values inside each of the tags in an array. If no values are
+	found the function will return the value (None). NOTE: This can
+	not find multiples of the same tag if they are on the same
 	line.'''
 	from re import sub,search,findall
 	#open the specified file
@@ -194,7 +194,7 @@ def getSettings():
 		return False
 	# rip file into an array of values based on the <preset> tag
 	dataValues = grabXmlValues(dataValues,'preset')
-	# create data to store array 
+	# create data to store array
 	data = []
 	for preset in dataValues:
 		# presets xml are striped into a dict
@@ -272,7 +272,7 @@ for arg in inputs:
 			print 'This parameter reset settings for a specified user!'
 			exit()
 		else:
-			for item in argument: 
+			for item in argument:
 				# compare the username given with users home folders
 				if os.path.exists(os.path.join('/home',item)):
 					# reset the users settings for the perfered user

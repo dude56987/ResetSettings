@@ -13,7 +13,7 @@
 # write as if your in the root of a users home folder
 # the program will replace settings with the presets in
 # /etc/skel so before adding entrys add the aproprate
-# files there. 
+# files there.
 # THE FOLDER LINE MUST ALWAYS BE ENDED WITH A / LIKE BELOW
 #	<folder>.appname/</folder>
 #	<file>.appnamerc</file>
@@ -29,17 +29,17 @@
 #	<file>.appnamerc</file>
 #</preset>
 ###################################################
-# Note that you can delete things with 
+# Note that you can delete things with
 # <deletefile></deletefile>
-# and 
+# and
 # <deletefolder></deletefolder>
 # although they are not recommended for most tasks
 ###################################################
 # You can also lauch a command when restoring with
 # the -p argument.
 # <command>yourcommand --someArgs somefile</command>
-# These commands will only run when using a preset 
-# to restore. If you are running a backup with -b 
+# These commands will only run when using a preset
+# to restore. If you are running a backup with -b
 # or a restore from a previous backup with -r the
 # command will not execute.
 ###################################################
