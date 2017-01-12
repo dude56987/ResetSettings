@@ -62,6 +62,10 @@
 	<folder>.config/screengrab/</folder>
 </preset>
 <preset>
+	<name>orage</name>
+	<folder>.config/orage/</folder>
+</preset>
+<preset>
 	<name>tilda</name>
 	<folder>.config/tilda/</folder>
 </preset>
